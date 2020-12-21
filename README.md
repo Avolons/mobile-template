@@ -1,29 +1,20 @@
-# mobile-template
+## vw兼容方案
 
-## Project setup
-```
-npm install
-```
+1. 引入js文件
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+<script src="//g.alicdn.com/fdilab/lib3rd/viewport-units-buggyfill/0.6.2/??viewport-units-buggyfill.hacks.min.js,viewport-units-buggyfill.min.js"></script>
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your unit tests
-```
-npm run test:unit
-```
+2. 在HTML文件中调用viewport-units-buggyfill
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
+window.onload = function () { 
+  window.viewportUnitsBuggyfill.init({
+     hacks: window.viewportUnitsBuggyfillHacks
+  }); 
+} 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+ps: 使用vw的polyfill解决方案会在用到的vw的地方添加content，会影响到img和伪元素，需要全局添加
+
+
+`img { content: normal !important; }
